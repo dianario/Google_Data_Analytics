@@ -4,7 +4,11 @@ This repo contains several SQL queries written for BigQuery as part of the Googl
 Multiple independent queries per file.
 
 Some of topics covered:
+
 -Joins
+
 -Simple calculations
+
 -Temp tables
+
 -Subqueries
