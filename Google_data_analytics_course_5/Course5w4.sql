@@ -24,8 +24,7 @@ WHERE
 Total_Bags <> 0
 
 
-
--- Extract function: pulling one part of a given date field
+-- NEW_YORK.CITIBIKE_trips exercise
 -- this query extracts the year of ride, then counts the number of rides in 
 -- a given year
 SELECT 
@@ -38,8 +37,7 @@ GROUP BY
 ORDER BY
 year DESC
 
-
--- Create a temp table to do multiple operations on then count trips
+-- Create a temp table with trips that have taken longer than 1 hr, then count them
 WITH trips_over_1_hr AS (
   SELECT  
     *
@@ -52,6 +50,9 @@ WITH trips_over_1_hr AS (
 SELECT
 COUNT(*) AS cnt
 FROM trips_over_1_hr
+
+
+
 
 --AUSTIN_BIKESHARE excercise
 -- find station with the longest ride duration from austin_bikeshare
@@ -67,10 +68,7 @@ WHERE
   FROM 
   `bigquery-public-data.austin_bikeshare.bikeshare_trips`);
 
-
--- determine which bike has been used the most
--- find out at which station the bike is most likely found
-
+-- determine which bike has been used the most and find out at which station the bike is most likely found
 --1st determine which bike has been used the most with a temp table
 WITH longest_used_bike AS (
   SELECT
@@ -82,8 +80,7 @@ WITH longest_used_bike AS (
   ORDER BY
     tot_trip_duration DESC
   LIMIT 1)
--- find station at which longest bikeshare ride is most likely to have started
--- aka find at what is the name of the station that has the most starts for that bike
+-- 2nd find at what is the name of the station that has the most starts for that bike
 SELECT 
   trips.start_station_id,
   trips.start_station_name,
