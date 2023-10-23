@@ -32,3 +32,7 @@ ggplot(data = hotel_bookings) +
   geom_bar(mapping = aes(x = distribution_channel)) +
   facet_wrap(~deposit_type~market_segment) +
   theme(axis.text.x = element_text(angle = 45))
+
+# booking lead time for guests travelling with children
+ggplot(data = hotel_bookings) +
+  geom_point(mapping = aes(x = lead_time, y = children))
