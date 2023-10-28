@@ -1,0 +1,37 @@
+---
+title: "c7w5 Hotel Booking Plots"
+author: "Diana Rios"
+date: "2023-10-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Analysis of hotel bookings by market type and hotel type
+
+This is analysis shows how the **offline TA/TO market** account for the largest numbers in bookings for both *city* and *resort* hotels.  
+
+This document also illustrates some basic usage of Rmd syntax.
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+library(tidyverse)
+hotel_bookings <- read.csv("hotel_bookings.csv")
+# plot booking counts for each market segment and hotel type
+mindate <- min(hotel_bookings$arrival_date_year)
+maxdate <- max(hotel_bookings$arrival_date_year)
+
+ggplot(data = hotel_bookings) +
+  geom_bar(mapping = aes(x = market_segment, fill=market_segment)) +
+  facet_wrap(~hotel) +
+  theme(axis.text.x = element_text(angle = 45)) +
+  labs(title="Comparison of market segments by hotel type for hotel bookings",
+       caption=paste0("Data from: ", mindate, " to ", maxdate),
+       x="Market Segment",
+       y="Number of Bookings")
+```
+
+
+
+
