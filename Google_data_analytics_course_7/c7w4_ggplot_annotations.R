@@ -14,3 +14,5 @@ plot <- ggplot(data=penguins)+
 plot + annotate("text", x=190, y=5000,
                label="Adelie and Chinstrap are equally sized", color="black",
              fontface="bold")
+ggsave("ThreePenguinSpecies.png")
+
